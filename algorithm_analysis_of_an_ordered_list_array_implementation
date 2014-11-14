@@ -1,0 +1,8 @@
+What's time complexity of
+
+1) insert O(1)
+2) find O(N)
+3) remove O(1)
+4) size O(1)
+
+

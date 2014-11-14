@@ -44,7 +44,7 @@ poller = Thread.new do
     buffer.enqueue message
     puts "pulled a message - current buffer size: #{buffer.size}" 
     logger.info "pulled a message - current buffer size: #{buffer.size}"
-    sleep 0.1
+    sleep 0.4
   end
 end
 
@@ -59,5 +59,7 @@ processor = Thread.new do
     end
   end
 end
+
+
 
 [poller, processor].each(&:join)
