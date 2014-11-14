@@ -41,20 +41,10 @@ class SinglyList
       else
         crawler = crawler.next_node
       end
-    end until crawler.next_node == nil
-    puts "The find found node #{self.current.value}."
+    end until crawler == nil
+    puts "The find method found node #{self.current.value}." if self.current != nil
+    puts "The find method did not find find value #{find_value} in the linked list" if self.current == nil
     self.current
-    # PSEUDO CODE:
-    # self.current = nil
-    # Initialize a variable to represent the crawler and make it the head node
-    # Start a begin 
-    # if value of the crawler is equal to find_value
-    #   Set @current = node and break
-    # else 
-    #   Advance to the next node
-    # end
-    # end until next_node == nil
-    # self.current
   end
 
   def insert(item)
@@ -64,6 +54,15 @@ class SinglyList
   end
 
   def size
+    return 0 if @head == nil
+    crawler = @head
+    counter = 1
+    while crawler.next_node != nil 
+      counter += 1
+      crawler = crawler.next_node
+    end
+
+    puts "This linked list is made up of #{counter} nodes."
   end
 
   def traverse
@@ -83,8 +82,10 @@ singlylist.add(2)
 singlylist.add(4)
 singlylist.add(5)
 singlylist.add(10)
-# singlylist.traverse
+singlylist.traverse
 singlylist.find(5)
+singlylist.find(6)
+singlylist.size
 
 
 
