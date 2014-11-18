@@ -7,6 +7,9 @@ require 'pry'
 
 #Great YouTube video: https://www.youtube.com/watch?v=QZOLb0xHB_Q
 
+#part of understanding this algorithm is the marching_paren is that we pop the last elment
+#off the stack to see whether it has a corresponding matching paren.
+
 def parens_checker(string)
   stack = [] 
   string.each_char do |char|
@@ -43,10 +46,3 @@ parens_checker("(())")
 parens_checker("[(())]")
 parens_checker("(())")
 parens_checker("{(())")
-
-
-
-#The hinge of this problem is that we can't merely count the number of ({[ brackets.  Otherwise,
-#we might end up in a situaiton where )( would be considered balanced but it clearly is not.
-#More importantly, when we encounter a closing bracket, we need to consider whether it is matched
-#with an opening bracket of the same type.  If it is not, we can return that the array is not balanced
