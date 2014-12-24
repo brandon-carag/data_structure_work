@@ -8,22 +8,24 @@
 #Compare both
 
 def binary_search(array,item,min,max) #We want this to return the array index of item
-  binding.pry
   midpoint = min + ( (max - min) / 2 )
   return midpoint if array[midpoint] == item
 
-  if max - min == 1
-    return (array[midpoint] == item ? midpoint : nil)
-    return (array[midpoint+1] == item ? midpoint+1 : nil)
+  if max - min == 1 || max - min == 0
+    if array[midpoint] == item
+      return midpoint
+    elsif array[midpoint +1] == item
+      return midpoint + 1
+    else
+      return nil
+    end
   end
 
 
   if array[midpoint] > item
-    max = midpoint
-    binary_search(array,item,min,max)
+    binary_search(array,item,min,midpoint)
   else array[midpoint] < item
-    min = midpoint
-    binary_search(array,item,min,max)
+    binary_search(array,item,midpoint,max)
   end
 
 end
