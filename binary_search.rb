@@ -21,7 +21,6 @@ def binary_search(array,item,min,max) #We want this to return the array index of
     end
   end
 
-
   if array[midpoint] > item
     binary_search(array,item,min,midpoint)
   else array[midpoint] < item
@@ -41,4 +40,24 @@ def find_middle_array_element(array)
   end
 
 end
+
+def slick_binary_search(value,array,min_index,max_index)
+  return "#{value} was not found in the supplied array." if max_index < min_index
+  min_max_difference = max_index - min_index
+  midpoint_index = min_index + min_max_difference/2
+  puts "The midpoint_index is #{midpoint_index} "
+
+  if array[midpoint_index] > value
+    puts "Binary search searching between #{min_index} and #{midpoint_index - 1} "
+    slick_binary_search(value, array, min_index, midpoint_index -1)
+  elsif array[midpoint_index] < value
+    puts "Binary search searching between #{midpoint_index+1} and #{max_index} "
+    slick_binary_search(value,array,midpoint_index + 1, max_index)
+  else
+    return midpoint_index
+  end
+  
+end
+
+
 

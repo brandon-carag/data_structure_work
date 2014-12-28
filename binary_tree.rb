@@ -163,12 +163,12 @@ end
 #========= Queue is used as a supporting data structure for level_order_traversal
 
 
-def level_order_traversal(node)
+def level_order_traversal(node) #This is probably the same as breadth-first search.
   return nil if node.nil?
 
   queue = Queue.new
   queue.enqueue(node)
-
+  puts "======"
   while queue.empty? == false
     queue.enqueue(node.left_node) if node.left_node != nil
     queue.enqueue(node.right_node) if node.right_node != nil
@@ -176,7 +176,7 @@ def level_order_traversal(node)
     queue.dequeue
     node = queue.head
   end
-  
+
 end
 
 end
@@ -195,7 +195,6 @@ tree.pre_order_traversal(tree.root_pointer)
 tree.depth_first_search(1,tree.root_pointer)
 tree.depth_first_search(100,tree.root_pointer)
 puts tree.get_height(tree.root_pointer)
-
 tree.level_order_traversal(tree.root_pointer)
 
 
